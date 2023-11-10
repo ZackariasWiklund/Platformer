@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gubbcontroller : MonoBehaviour
 {
@@ -64,6 +65,21 @@ public class gubbcontroller : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Enemy"){
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Drop"){
+            SceneManager.LoadScene(1);
+        }
+        if(other.gameObject.tag == "Win"){
+            SceneManager.LoadScene(2);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if (feet)
@@ -72,4 +88,7 @@ public class gubbcontroller : MonoBehaviour
         }
     } 
 
-}
+    
+    }
+
+
